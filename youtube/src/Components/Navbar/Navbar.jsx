@@ -15,71 +15,76 @@ import Submenu from "../../Pages/Home/Submenu";
 import Drawer from "@mui/material/Drawer";
 import Sidebar from "../Sidebar/Sidebar";
 const Navbar = () => {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="">
-      <nav className="flex item !w-full">
-        <div className="nav-left flex-div">
+    <header className="w-full fixed top-0 left-0 bg-white shadow-md z-50">
+      <nav className="flex items-center  h-[60px] justify-between px-4 py-2  md:px-6">
+        {/* Left Section */}
+        <div className="flex items-center gap-3">
           <IoMdMenu
-            className=" bg-sky hover:bg-[#dbd7d7]  text-3xl !p-1 !rounded-full cursor-pointer"
-            onClick={()=>setOpen(!open)}
+            className="text-3xl p-1 rounded-full cursor-pointer hover:bg-gray-200"
+            onClick={() => setOpen(!open)}
           />
           <Drawer
             open={open}
             anchor="left"
             hideBackdrop
             ModalProps={{
-              sx: {
-                pointerEvents: "none", //
-              },
+              sx: { pointerEvents: "none" },
               BackdropProps: {
                 sx: {
                   backgroundColor: "transparent",
-                  pointerEvents: "none", //
+                  pointerEvents: "none",
                 },
               },
             }}
             PaperProps={{
               sx: {
-                pointerEvents: "auto", // Ensure the sidebar itself is clickable
-                top: "92px",
-                height: "calc(100% - 92px)",
+                pointerEvents: "auto",
+                top: "60px",
+                height: "calc(100% - 60px)",
                 borderRight: "1px solid #ddd",
                 boxShadow: "none",
                 position: "fixed",
               },
             }}
           >
-            <Sidebar  />
+            <Sidebar />
           </Drawer>
-          <img className="logo" src={logo} alt="" />
+          <img src={logo} alt="Logo" className="h-22 w-auto" />
         </div>
 
-        <div className="nav-middle flex-div">
-          <div className="search-box flex-div">
-            <input type="text" placeholder="search here..." />
-            <IoSearch className="search " />
+       
+        <div className="hidden sm:flex flex-1 max-w-xl mx-4 items-center gap-2">
+          <div className="flex flex-1 items-center border h-9 border-gray-300 rounded-full px-3 py-1">
+            <input
+              type="text"
+              placeholder="Search here..."
+              className="flex-1 outline-none bg-transparent text-sm !p-2 "
+            />
+            <IoSearch className="text-gray-500 !mr-2" />
           </div>
-          <button
-            className="bg-sky hover:bg-[#dbd7d7] !p-1 !rounded-full cursor-pointer"
-            
-          >
-            <MdKeyboardVoice className=" text-[23px]" />
+          <button className="p-3 rounded-full hover:bg-gray-200">
+            <MdKeyboardVoice className="text-2xl " />
           </button>
         </div>
 
-        <div className="create h-[50%] !mt-7  justify-center">
-          <IoAddOutline /> Create
-        </div>
-
-        <div className="nav-right flex-div">
-          <IoMdNotifications />
-
-          <img src={profile} className="myprofile" alt=" Profile" />
+      
+        <div className="flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-1 cursor-pointer">
+            <IoAddOutline className="text-xl" />
+            <span className="text-sm font-medium">Create</span>
+          </div>
+          <IoMdNotifications className="text-xl cursor-pointer" />
+          <img
+            src={profile}
+            alt="Profile"
+            className="h-8 w-8 rounded-full object-cover cursor-pointer"
+          />
         </div>
       </nav>
-    </div>
+    </header>
   );
 };
 
