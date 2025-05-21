@@ -2,8 +2,8 @@ import React from 'react'
 
 const Submenu = () => {
   return (
-    <div>
-      <div className="flex justify-center flex-wrap gap-4 !ml-4 !p-2 overflow-x-auto w-full">
+    <div className='w-full bg-white !p-2 shadow-sm sticky top-[60px] !mt-17 !mb-3 z-40 '>
+      <div className="flex items-center gap-3 px-4 py-2 overflow-x-auto whitespace-nowrap scrollbar-hide ">
     {[
       "All",
       "Music",
